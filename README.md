@@ -7,3 +7,4 @@
 * Lesson1[AudioSession](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson1)
 * Lesson2[AudioFileStream](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson2)
 * Lesson3[AudioFile](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson3)
+* Lesson4[AudioQueue](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson4)
