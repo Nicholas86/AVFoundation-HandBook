@@ -1,0 +1,348 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		040FC3881D1383DF00864E0E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 040FC3871D1383DF00864E0E /* main.m */; };
+		040FC38B1D1383DF00864E0E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 040FC38A1D1383DF00864E0E /* AppDelegate.m */; };
+		040FC38E1D1383DF00864E0E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040FC38D1D1383DF00864E0E /* ViewController.m */; };
+		040FC3911D1383DF00864E0E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040FC38F1D1383DF00864E0E /* Main.storyboard */; };
+		040FC3931D1383DF00864E0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 040FC3921D1383DF00864E0E /* Assets.xcassets */; };
+		040FC3961D1383E000864E0E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 040FC3941D1383E000864E0E /* LaunchScreen.storyboard */; };
+		040FC3A01D1385DA00864E0E /* JKSimpleAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 040FC39F1D1385DA00864E0E /* JKSimpleAudioPlayer.m */; };
+		040FC3A31D138E3800864E0E /* JKAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 040FC3A21D138E3800864E0E /* JKAudioSession.m */; };
+		043C49B31D141828004907CF /* JKAudioFileStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B21D141828004907CF /* JKAudioFileStream.m */; };
+		043C49B61D141854004907CF /* JkAudioBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B51D141854004907CF /* JkAudioBuffer.m */; };
+		043C49B91D14186B004907CF /* JKParsedAudioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B81D14186B004907CF /* JKParsedAudioData.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		040FC3831D1383DF00864E0E /* JKSimpleAudioPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JKSimpleAudioPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		040FC3871D1383DF00864E0E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		040FC3891D1383DF00864E0E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		040FC38A1D1383DF00864E0E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		040FC38C1D1383DF00864E0E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		040FC38D1D1383DF00864E0E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		040FC3901D1383DF00864E0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		040FC3921D1383DF00864E0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		040FC3951D1383E000864E0E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		040FC3971D1383E000864E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		040FC39E1D1385DA00864E0E /* JKSimpleAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKSimpleAudioPlayer.h; sourceTree = "<group>"; };
+		040FC39F1D1385DA00864E0E /* JKSimpleAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKSimpleAudioPlayer.m; sourceTree = "<group>"; };
+		040FC3A11D138E3800864E0E /* JKAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAudioSession.h; sourceTree = "<group>"; };
+		040FC3A21D138E3800864E0E /* JKAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAudioSession.m; sourceTree = "<group>"; };
+		043C49B11D141828004907CF /* JKAudioFileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAudioFileStream.h; sourceTree = "<group>"; };
+		043C49B21D141828004907CF /* JKAudioFileStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAudioFileStream.m; sourceTree = "<group>"; };
+		043C49B41D141854004907CF /* JkAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JkAudioBuffer.h; sourceTree = "<group>"; };
+		043C49B51D141854004907CF /* JkAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JkAudioBuffer.m; sourceTree = "<group>"; };
+		043C49B71D14186B004907CF /* JKParsedAudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKParsedAudioData.h; sourceTree = "<group>"; };
+		043C49B81D14186B004907CF /* JKParsedAudioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKParsedAudioData.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		040FC3801D1383DF00864E0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		040FC37A1D1383DF00864E0E = {
+			isa = PBXGroup;
+			children = (
+				040FC3851D1383DF00864E0E /* JKSimpleAudioPlayerDemo */,
+				040FC3841D1383DF00864E0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		040FC3841D1383DF00864E0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				040FC3831D1383DF00864E0E /* JKSimpleAudioPlayerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		040FC3851D1383DF00864E0E /* JKSimpleAudioPlayerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				040FC39D1D13851F00864E0E /* JKSimpleAudioPlayer */,
+				040FC3891D1383DF00864E0E /* AppDelegate.h */,
+				040FC38A1D1383DF00864E0E /* AppDelegate.m */,
+				040FC38C1D1383DF00864E0E /* ViewController.h */,
+				040FC38D1D1383DF00864E0E /* ViewController.m */,
+				040FC38F1D1383DF00864E0E /* Main.storyboard */,
+				040FC3921D1383DF00864E0E /* Assets.xcassets */,
+				040FC3941D1383E000864E0E /* LaunchScreen.storyboard */,
+				040FC3971D1383E000864E0E /* Info.plist */,
+				040FC3861D1383DF00864E0E /* Supporting Files */,
+			);
+			path = JKSimpleAudioPlayerDemo;
+			sourceTree = "<group>";
+		};
+		040FC3861D1383DF00864E0E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				040FC3871D1383DF00864E0E /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		040FC39D1D13851F00864E0E /* JKSimpleAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				040FC39E1D1385DA00864E0E /* JKSimpleAudioPlayer.h */,
+				040FC39F1D1385DA00864E0E /* JKSimpleAudioPlayer.m */,
+				040FC3A11D138E3800864E0E /* JKAudioSession.h */,
+				040FC3A21D138E3800864E0E /* JKAudioSession.m */,
+				043C49B11D141828004907CF /* JKAudioFileStream.h */,
+				043C49B21D141828004907CF /* JKAudioFileStream.m */,
+				043C49B41D141854004907CF /* JkAudioBuffer.h */,
+				043C49B51D141854004907CF /* JkAudioBuffer.m */,
+				043C49B71D14186B004907CF /* JKParsedAudioData.h */,
+				043C49B81D14186B004907CF /* JKParsedAudioData.m */,
+			);
+			name = JKSimpleAudioPlayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		040FC3821D1383DF00864E0E /* JKSimpleAudioPlayerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 040FC39A1D1383E000864E0E /* Build configuration list for PBXNativeTarget "JKSimpleAudioPlayerDemo" */;
+			buildPhases = (
+				040FC37F1D1383DF00864E0E /* Sources */,
+				040FC3801D1383DF00864E0E /* Frameworks */,
+				040FC3811D1383DF00864E0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JKSimpleAudioPlayerDemo;
+			productName = JKSimpleAudioPlayerDemo;
+			productReference = 040FC3831D1383DF00864E0E /* JKSimpleAudioPlayerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		040FC37B1D1383DF00864E0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = Jack;
+				TargetAttributes = {
+					040FC3821D1383DF00864E0E = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 040FC37E1D1383DF00864E0E /* Build configuration list for PBXProject "JKSimpleAudioPlayerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 040FC37A1D1383DF00864E0E;
+			productRefGroup = 040FC3841D1383DF00864E0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				040FC3821D1383DF00864E0E /* JKSimpleAudioPlayerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		040FC3811D1383DF00864E0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040FC3961D1383E000864E0E /* LaunchScreen.storyboard in Resources */,
+				040FC3931D1383DF00864E0E /* Assets.xcassets in Resources */,
+				040FC3911D1383DF00864E0E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		040FC37F1D1383DF00864E0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				040FC38E1D1383DF00864E0E /* ViewController.m in Sources */,
+				043C49B61D141854004907CF /* JkAudioBuffer.m in Sources */,
+				040FC38B1D1383DF00864E0E /* AppDelegate.m in Sources */,
+				040FC3A01D1385DA00864E0E /* JKSimpleAudioPlayer.m in Sources */,
+				043C49B31D141828004907CF /* JKAudioFileStream.m in Sources */,
+				040FC3A31D138E3800864E0E /* JKAudioSession.m in Sources */,
+				043C49B91D14186B004907CF /* JKParsedAudioData.m in Sources */,
+				040FC3881D1383DF00864E0E /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		040FC38F1D1383DF00864E0E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				040FC3901D1383DF00864E0E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		040FC3941D1383E000864E0E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				040FC3951D1383E000864E0E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		040FC3981D1383E000864E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		040FC3991D1383E000864E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		040FC39B1D1383E000864E0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JKSimpleAudioPlayerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ks.JKSimpleAudioPlayerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		040FC39C1D1383E000864E0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = JKSimpleAudioPlayerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ks.JKSimpleAudioPlayerDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		040FC37E1D1383DF00864E0E /* Build configuration list for PBXProject "JKSimpleAudioPlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040FC3981D1383E000864E0E /* Debug */,
+				040FC3991D1383E000864E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		040FC39A1D1383E000864E0E /* Build configuration list for PBXNativeTarget "JKSimpleAudioPlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				040FC39B1D1383E000864E0E /* Debug */,
+				040FC39C1D1383E000864E0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 040FC37B1D1383DF00864E0E /* Project object */;
+}

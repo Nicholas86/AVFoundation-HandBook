@@ -8,3 +8,4 @@
 * Lesson2[AudioFileStream](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson2)
 * Lesson3[AudioFile](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson3)
 * Lesson4[AudioQueue](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson4)
+* Lesson5[简单的音频播放器实现](https://github.com/AlfredTheBest/AVFoundation-HandBook/tree/master/lesson5)
