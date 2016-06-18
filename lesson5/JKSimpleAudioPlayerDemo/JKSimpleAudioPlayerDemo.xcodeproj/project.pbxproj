@@ -18,6 +18,7 @@
 		043C49B31D141828004907CF /* JKAudioFileStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B21D141828004907CF /* JKAudioFileStream.m */; };
 		043C49B61D141854004907CF /* JkAudioBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B51D141854004907CF /* JkAudioBuffer.m */; };
 		043C49B91D14186B004907CF /* JKParsedAudioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B81D14186B004907CF /* JKParsedAudioData.m */; };
+		047D19D41D15362100BEEC2A /* JKAuidoFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D19D31D15362100BEEC2A /* JKAuidoFile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		043C49B51D141854004907CF /* JkAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JkAudioBuffer.m; sourceTree = "<group>"; };
 		043C49B71D14186B004907CF /* JKParsedAudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKParsedAudioData.h; sourceTree = "<group>"; };
 		043C49B81D14186B004907CF /* JKParsedAudioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKParsedAudioData.m; sourceTree = "<group>"; };
+		047D19D21D15362100BEEC2A /* JKAuidoFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAuidoFile.h; sourceTree = "<group>"; };
+		047D19D31D15362100BEEC2A /* JKAuidoFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAuidoFile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,12 +101,14 @@
 		040FC39D1D13851F00864E0E /* JKSimpleAudioPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				040FC39E1D1385DA00864E0E /* JKSimpleAudioPlayer.h */,
-				040FC39F1D1385DA00864E0E /* JKSimpleAudioPlayer.m */,
 				040FC3A11D138E3800864E0E /* JKAudioSession.h */,
 				040FC3A21D138E3800864E0E /* JKAudioSession.m */,
+				047D19D21D15362100BEEC2A /* JKAuidoFile.h */,
+				047D19D31D15362100BEEC2A /* JKAuidoFile.m */,
 				043C49B11D141828004907CF /* JKAudioFileStream.h */,
 				043C49B21D141828004907CF /* JKAudioFileStream.m */,
+				040FC39E1D1385DA00864E0E /* JKSimpleAudioPlayer.h */,
+				040FC39F1D1385DA00864E0E /* JKSimpleAudioPlayer.m */,
 				043C49B41D141854004907CF /* JkAudioBuffer.h */,
 				043C49B51D141854004907CF /* JkAudioBuffer.m */,
 				043C49B71D14186B004907CF /* JKParsedAudioData.h */,
@@ -185,6 +190,7 @@
 				040FC38E1D1383DF00864E0E /* ViewController.m in Sources */,
 				043C49B61D141854004907CF /* JkAudioBuffer.m in Sources */,
 				040FC38B1D1383DF00864E0E /* AppDelegate.m in Sources */,
+				047D19D41D15362100BEEC2A /* JKAuidoFile.m in Sources */,
 				040FC3A01D1385DA00864E0E /* JKSimpleAudioPlayer.m in Sources */,
 				043C49B31D141828004907CF /* JKAudioFileStream.m in Sources */,
 				040FC3A31D138E3800864E0E /* JKAudioSession.m in Sources */,
