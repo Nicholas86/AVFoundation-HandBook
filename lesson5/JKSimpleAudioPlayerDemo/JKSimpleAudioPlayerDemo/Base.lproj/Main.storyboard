@@ -20,10 +20,13 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbQ-Ee-c37">
                                 <rect key="frame" x="137" y="81" width="46" height="30"/>
                                 <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="playOrPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FJg-Na-sQc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6iT-32-iys">
                                 <rect key="frame" x="137" y="174" width="46" height="30"/>
-                                <state key="normal" title="Pause"/>
+                                <state key="normal" title="stop"/>
                                 <connections>
                                     <action selector="stop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZdA-nB-9Yl"/>
                                 </connections>
@@ -34,15 +37,17 @@
                                     <action selector="seek:" destination="BYZ-38-t0r" eventType="valueChanged" id="xBQ-la-nr9"/>
                                 </connections>
                             </slider>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN8-Ql-25E">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN8-Ql-25E">
                                 <rect key="frame" x="137" y="81" width="46" height="30"/>
                                 <state key="normal" title="Play"/>
-                                <connections>
-                                    <action selector="playOrPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3io-lL-lc1"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="pN8-Ql-25E"/>
+                            </mask>
+                        </variation>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
