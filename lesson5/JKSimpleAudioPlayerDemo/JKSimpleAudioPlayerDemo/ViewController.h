@@ -10,6 +10,8 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+@property (weak, nonatomic) IBOutlet UISlider *progressSlider;
 
 @end
 

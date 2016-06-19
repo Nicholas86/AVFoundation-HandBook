@@ -18,7 +18,10 @@
 		043C49B31D141828004907CF /* JKAudioFileStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B21D141828004907CF /* JKAudioFileStream.m */; };
 		043C49B61D141854004907CF /* JkAudioBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B51D141854004907CF /* JkAudioBuffer.m */; };
 		043C49B91D14186B004907CF /* JKParsedAudioData.m in Sources */ = {isa = PBXBuildFile; fileRef = 043C49B81D14186B004907CF /* JKParsedAudioData.m */; };
-		047D19D41D15362100BEEC2A /* JKAuidoFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D19D31D15362100BEEC2A /* JKAuidoFile.m */; };
+		047D19D41D15362100BEEC2A /* JKAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D19D31D15362100BEEC2A /* JKAudioFile.m */; };
+		04DC26821D16368D008A2328 /* JKAudioOutputQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DC26811D16368D008A2328 /* JKAudioOutputQueue.m */; };
+		04DC26851D1659DA008A2328 /* NSTimer+BlocksSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 04DC26841D1659DA008A2328 /* NSTimer+BlocksSupport.m */; };
+		04DC26871D165A85008A2328 /* MP3Sample.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 04DC26861D165A85008A2328 /* MP3Sample.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +45,13 @@
 		043C49B51D141854004907CF /* JkAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JkAudioBuffer.m; sourceTree = "<group>"; };
 		043C49B71D14186B004907CF /* JKParsedAudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKParsedAudioData.h; sourceTree = "<group>"; };
 		043C49B81D14186B004907CF /* JKParsedAudioData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKParsedAudioData.m; sourceTree = "<group>"; };
-		047D19D21D15362100BEEC2A /* JKAuidoFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAuidoFile.h; sourceTree = "<group>"; };
-		047D19D31D15362100BEEC2A /* JKAuidoFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAuidoFile.m; sourceTree = "<group>"; };
+		047D19D21D15362100BEEC2A /* JKAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAudioFile.h; sourceTree = "<group>"; };
+		047D19D31D15362100BEEC2A /* JKAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAudioFile.m; sourceTree = "<group>"; };
+		04DC26801D16368D008A2328 /* JKAudioOutputQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKAudioOutputQueue.h; sourceTree = "<group>"; };
+		04DC26811D16368D008A2328 /* JKAudioOutputQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKAudioOutputQueue.m; sourceTree = "<group>"; };
+		04DC26831D1659DA008A2328 /* NSTimer+BlocksSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+BlocksSupport.h"; sourceTree = "<group>"; };
+		04DC26841D1659DA008A2328 /* NSTimer+BlocksSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+BlocksSupport.m"; sourceTree = "<group>"; };
+		04DC26861D165A85008A2328 /* MP3Sample.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MP3Sample.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,8 @@
 				040FC38A1D1383DF00864E0E /* AppDelegate.m */,
 				040FC38C1D1383DF00864E0E /* ViewController.h */,
 				040FC38D1D1383DF00864E0E /* ViewController.m */,
+				04DC26831D1659DA008A2328 /* NSTimer+BlocksSupport.h */,
+				04DC26841D1659DA008A2328 /* NSTimer+BlocksSupport.m */,
 				040FC38F1D1383DF00864E0E /* Main.storyboard */,
 				040FC3921D1383DF00864E0E /* Assets.xcassets */,
 				040FC3941D1383E000864E0E /* LaunchScreen.storyboard */,
@@ -93,6 +103,7 @@
 		040FC3861D1383DF00864E0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				04DC26861D165A85008A2328 /* MP3Sample.mp3 */,
 				040FC3871D1383DF00864E0E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -103,8 +114,8 @@
 			children = (
 				040FC3A11D138E3800864E0E /* JKAudioSession.h */,
 				040FC3A21D138E3800864E0E /* JKAudioSession.m */,
-				047D19D21D15362100BEEC2A /* JKAuidoFile.h */,
-				047D19D31D15362100BEEC2A /* JKAuidoFile.m */,
+				047D19D21D15362100BEEC2A /* JKAudioFile.h */,
+				047D19D31D15362100BEEC2A /* JKAudioFile.m */,
 				043C49B11D141828004907CF /* JKAudioFileStream.h */,
 				043C49B21D141828004907CF /* JKAudioFileStream.m */,
 				040FC39E1D1385DA00864E0E /* JKSimpleAudioPlayer.h */,
@@ -113,6 +124,8 @@
 				043C49B51D141854004907CF /* JkAudioBuffer.m */,
 				043C49B71D14186B004907CF /* JKParsedAudioData.h */,
 				043C49B81D14186B004907CF /* JKParsedAudioData.m */,
+				04DC26801D16368D008A2328 /* JKAudioOutputQueue.h */,
+				04DC26811D16368D008A2328 /* JKAudioOutputQueue.m */,
 			);
 			name = JKSimpleAudioPlayer;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				040FC3961D1383E000864E0E /* LaunchScreen.storyboard in Resources */,
+				04DC26871D165A85008A2328 /* MP3Sample.mp3 in Resources */,
 				040FC3931D1383DF00864E0E /* Assets.xcassets in Resources */,
 				040FC3911D1383DF00864E0E /* Main.storyboard in Resources */,
 			);
@@ -190,11 +204,13 @@
 				040FC38E1D1383DF00864E0E /* ViewController.m in Sources */,
 				043C49B61D141854004907CF /* JkAudioBuffer.m in Sources */,
 				040FC38B1D1383DF00864E0E /* AppDelegate.m in Sources */,
-				047D19D41D15362100BEEC2A /* JKAuidoFile.m in Sources */,
+				047D19D41D15362100BEEC2A /* JKAudioFile.m in Sources */,
+				04DC26821D16368D008A2328 /* JKAudioOutputQueue.m in Sources */,
 				040FC3A01D1385DA00864E0E /* JKSimpleAudioPlayer.m in Sources */,
 				043C49B31D141828004907CF /* JKAudioFileStream.m in Sources */,
 				040FC3A31D138E3800864E0E /* JKAudioSession.m in Sources */,
 				043C49B91D14186B004907CF /* JKParsedAudioData.m in Sources */,
+				04DC26851D1659DA008A2328 /* NSTimer+BlocksSupport.m in Sources */,
 				040FC3881D1383DF00864E0E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,77 +28,79 @@ static void JKAudioSessionInterruptionListener(void *inClientData, UInt32 inInte
     [[NSNotificationCenter defaultCenter] postNotificationName:JKAudioSessionInterruptionNotification object:audioSession userInfo:userInfo];
 }
 
-static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPropertyID inPropertyID, UInt32 inPropertyValueSize, const void *inPropertyValue) {
-    if (inPropertyID != kAudioSessionProperty_AudioRouteChange) {
+static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPropertyID inPropertyID, UInt32 inPropertyValueSize, const void *inPropertyValue)
+{
+    if (inPropertyID != kAudioSessionProperty_AudioRouteChange)
+    {
         return;
     }
     CFDictionaryRef routeChangeDictionary = inPropertyValue;
-    CFNumberRef routeChangeReasonRef = CFDictionaryGetValue( routeChangeDictionary, CFSTR(kAudioSession_AudioRouteChangeKey_Reason));
+    CFNumberRef routeChangeReasonRef = CFDictionaryGetValue (routeChangeDictionary, CFSTR (kAudioSession_AudioRouteChangeKey_Reason));
     SInt32 routeChangeReason;
-    CFNumberGetValue(routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
+    CFNumberGetValue (routeChangeReasonRef, kCFNumberSInt32Type, &routeChangeReason);
     
     NSDictionary *userInfo = @{JKAudioSessionRouteChangeReason:@(routeChangeReason)};
     JKAudioSession *audioSession = (__bridge JKAudioSession *)inClientData;
     [[NSNotificationCenter defaultCenter] postNotificationName:JKAudioSessionRouteChangeNotification object:audioSession userInfo:userInfo];
-    
 }
-
 
 @implementation JKAudioSession
 
-+ (id)sharedInstance {
-    static dispatch_once_t onceToken;
-    static JKAudioSession *shareInstance;
-    dispatch_once(&onceToken, ^{
-        shareInstance = [[self alloc] init];
++ (id)sharedInstance
+{
+    static dispatch_once_t once;
+    static JKAudioSession *sharedInstance;
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
     });
-    return shareInstance;
+    return sharedInstance;
 }
 
-- (instancetype)init {
-    if (self = [super init]) {
-        
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        [self _initializeAudioSession];
     }
-    
     return self;
 }
 
-
-- (void)dealloc {
+- (void)dealloc
+{
     AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_AudioRouteChange, JKAudioSessionRouteChangeListener, (__bridge void *)self);
 }
 
-
 #pragma mark - private
-
-- (void)_errorForOSStatus:(OSStatus)status error:(NSError *__autoreleasing *)outError {
-    if (status != noErr && outError != NULL) {
+- (void)_errorForOSStatus:(OSStatus)status error:(NSError *__autoreleasing *)outError
+{
+    if (status != noErr && outError != NULL)
+    {
         *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
     }
 }
 
-- (void)_initializeAudioSession {
+- (void)_initializeAudioSession
+{
     AudioSessionInitialize(NULL, NULL, JKAudioSessionInterruptionListener, (__bridge void *)self);
     AudioSessionAddPropertyListener(kAudioSessionProperty_AudioRouteChange, JKAudioSessionRouteChangeListener, (__bridge void *)self);
 }
 
-
 #pragma mark - public
-
-- (BOOL)setActive:(BOOL)active
-            error:(NSError *__autoreleasing *)outError {
+- (BOOL)setActive:(BOOL)active error:(NSError *__autoreleasing *)outError
+{
     OSStatus status = AudioSessionSetActive(active);
-    if (status == kAudioSessionNotInitialized) {
+    if (status == kAudioSessionNotInitialized)
+    {
         [self _initializeAudioSession];
         status = AudioSessionSetActive(active);
     }
     [self _errorForOSStatus:status error:outError];
-    return  status = noErr;
+    return status == noErr;
 }
 
-- (BOOL)setActive:(BOOL)active
-          options:(UInt32)options
-            error:(NSError *__autoreleasing *)outError {
+- (BOOL)setActive:(BOOL)active options:(UInt32)options error:(NSError *__autoreleasing *)outError
+{
     OSStatus status = AudioSessionSetActiveWithFlags(active,options);
     if (status == kAudioSessionNotInitialized)
     {
@@ -109,23 +111,20 @@ static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPr
     return status == noErr;
 }
 
-
-- (BOOL)setCategory:(UInt32)category
-              error:(NSError *__autoreleasing *)outError {
-    OSStatus status = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
-    if (status == kAudioSessionNotInitialized) {
+- (BOOL)setCategory:(UInt32)category error:(NSError *__autoreleasing *)outError
+{
+    OSStatus status = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,sizeof(category),&category);
+    if (status == kAudioSessionNotInitialized)
+    {
         [self _initializeAudioSession];
-        OSStatus status = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory, sizeof(category), &category);
+        status = AudioSessionSetProperty(kAudioSessionProperty_AudioCategory,sizeof(category),&category);
     }
-    [self _errorForOSStatus:status
-                      error:outError];
+    [self _errorForOSStatus:status error:outError];
     return status == noErr;
 }
 
-- (BOOL)setProperty:(AudioSessionPropertyID)propertyID
-           dataSize:(UInt32)dataSize
-               data:(const void *)data
-              error:(NSError *__autoreleasing *)outError {
+- (BOOL)setProperty:(AudioSessionPropertyID)propertyID dataSize:(UInt32)dataSize data:(const void *)data error:(NSError *__autoreleasing *)outError
+{
     OSStatus status = AudioSessionSetProperty(propertyID,dataSize,data);
     if (status == kAudioSessionNotInitialized)
     {
@@ -136,10 +135,8 @@ static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPr
     return status == noErr;
 }
 
-- (BOOL)addPropertyListener:(AudioSessionPropertyID)propertyID
-             listenerMethod:(AudioSessionPropertyListener)listenerMethod
-                    context:(void *)context
-                      error:(NSError *__autoreleasing *)outError {
+- (BOOL)addPropertyListener:(AudioSessionPropertyID)propertyID listenerMethod:(AudioSessionPropertyListener)listenerMethod context:(void *)context error:(NSError *__autoreleasing *)outError
+{
     OSStatus status = AudioSessionAddPropertyListener(propertyID,listenerMethod,context);
     if (status == kAudioSessionNotInitialized)
     {
@@ -150,10 +147,7 @@ static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPr
     return status == noErr;
 }
 
-- (BOOL)removePropertyListener:(AudioSessionPropertyID)propertyID
-                listenerMethod:(AudioSessionPropertyListener)listenerMethod
-                       context:(void *)context
-                         error:(NSError *__autoreleasing *)outError
+- (BOOL)removePropertyListener:(AudioSessionPropertyID)propertyID listenerMethod:(AudioSessionPropertyListener)listenerMethod context:(void *)context error:(NSError *__autoreleasing *)outError
 {
     OSStatus status = AudioSessionRemovePropertyListenerWithUserData(propertyID,listenerMethod,context);
     if (status == kAudioSessionNotInitialized)
@@ -165,8 +159,8 @@ static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPr
     return status == noErr;
 }
 
-
-+ (BOOL)usingHeadset {
++ (BOOL)usingHeadset
+{
 #if TARGET_IPHONE_SIMULATOR
     return NO;
 #endif
@@ -212,10 +206,10 @@ static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPr
     }
     
     return hasHeadset;
-    
 }
 
-+ (BOOL)isAirplayActived {
++ (BOOL)isAirplayActived
+{
     CFDictionaryRef currentRouteDescriptionDictionary = nil;
     UInt32 dataSize = sizeof(currentRouteDescriptionDictionary);
     AudioSessionGetProperty(kAudioSessionProperty_AudioRouteDescription, &dataSize, &currentRouteDescriptionDictionary);
@@ -235,9 +229,7 @@ static void JKAudioSessionRouteChangeListener(void *inClientData, AudioSessionPr
         CFRelease(currentRouteDescriptionDictionary);
     }
     return airplayActived;
-    
 }
-
 @end
 
 

@@ -66,11 +66,12 @@ static void JKAudioFileStreamPacketsCallBack(void *inClientData,
 @synthesize audioDataByteCount = _audioDataByteCount;
 
 
-#pragma mark - init & dealloc
-- (instancetype)initWithFileType:(AudioFileTypeID)fileType
-                        fileSize:(unsigned long long)fileSize
-                           error:(NSError **)error {
-    if (self = [super init]) {
+#pragma init & dealloc
+- (instancetype)initWithFileType:(AudioFileTypeID)fileType fileSize:(unsigned long long)fileSize error:(NSError **)error
+{
+    self  = [super init];
+    if (self)
+    {
         _discontinuous = NO;
         _fileType = fileType;
         _fileSize = fileSize;
@@ -79,82 +80,101 @@ static void JKAudioFileStreamPacketsCallBack(void *inClientData,
     return self;
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     [self _closeAudioFileStream];
 }
 
-- (void)_errorForOSStatus:(OSStatus)status error:(NSError *__autoreleasing *)outError {
-    if (status != noErr && outError != NULL) {
+- (void)_errorForOSStatus:(OSStatus)status error:(NSError *__autoreleasing *)outError
+{
+    if (status != noErr && outError != NULL)
+    {
         *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:status userInfo:nil];
     }
 }
 
 #pragma mark - open & close
-
-- (BOOL)_openAudioFileStreamWithFileTypeHint:(AudioFileTypeID)fileTypeHint error:(NSError *__autoreleasing *)error {
+- (BOOL)_openAudioFileStreamWithFileTypeHint:(AudioFileTypeID)fileTypeHint error:(NSError *__autoreleasing *)error
+{
     OSStatus status = AudioFileStreamOpen((__bridge void *)self,
                                           JKAudioFileStreamPropertyListener,
                                           JKAudioFileStreamPacketsCallBack,
                                           fileTypeHint,
                                           &_audioFileStreamID);
-    if (status != noErr) {
+    
+    if (status != noErr)
+    {
         _audioFileStreamID = NULL;
     }
     [self _errorForOSStatus:status error:error];
     return status == noErr;
 }
 
-- (void)_closeAudioFileStream {
-    if (self.available) {
+- (void)_closeAudioFileStream
+{
+    if (self.available)
+    {
         AudioFileStreamClose(_audioFileStreamID);
         _audioFileStreamID = NULL;
     }
 }
 
-- (void)close {
+- (void)close
+{
     [self _closeAudioFileStream];
 }
 
-- (BOOL)available {
+- (BOOL)available
+{
     return _audioFileStreamID != NULL;
 }
 
 #pragma mark - actions
-- (NSData *)fetchMagicCookie {
+- (NSData *)fetchMagicCookie
+{
     UInt32 cookieSize;
-    Boolean writeable;
-    OSStatus status = AudioFileStreamGetPropertyInfo(_audioFileStreamID, kAudioFileStreamProperty_MagicCookieData, &cookieSize, &writeable);
-    if (status != noErr) {
+    Boolean writable;
+    OSStatus status = AudioFileStreamGetPropertyInfo(_audioFileStreamID, kAudioFileStreamProperty_MagicCookieData, &cookieSize, &writable);
+    if (status != noErr)
+    {
         return nil;
     }
+    
     void *cookieData = malloc(cookieSize);
     status = AudioFileStreamGetProperty(_audioFileStreamID, kAudioFileStreamProperty_MagicCookieData, &cookieSize, cookieData);
+    if (status != noErr)
+    {
+        return nil;
+    }
+    
     NSData *cookie = [NSData dataWithBytes:cookieData length:cookieSize];
     free(cookieData);
     
     return cookie;
 }
 
-- (BOOL)parseData:(NSData *)data
-            error:(NSError **)error {
-    
-    if (self.readyToProducePackets && _packetDuration == 0) {
+- (BOOL)parseData:(NSData *)data error:(NSError **)error
+{
+    if (self.readyToProducePackets && _packetDuration == 0)
+    {
         [self _errorForOSStatus:-1 error:error];
         return NO;
     }
     OSStatus status = AudioFileStreamParseBytes(_audioFileStreamID,(UInt32)[data length],[data bytes],_discontinuous ? kAudioFileStreamParseFlag_Discontinuity : 0);
     [self _errorForOSStatus:status error:error];
-    return  status = noErr;
+    return status == noErr;
 }
 
-- (SInt64)seekToTime:(NSTimeInterval *)time {
+- (SInt64)seekToTime:(NSTimeInterval *)time
+{
     SInt64 approximateSeekOffset = _dataOffset + (*time / _duration) * _audioDataByteCount;
     SInt64 seekToPacket = floor(*time / _packetDuration);
     SInt64 seekByteOffset;
     UInt32 ioFlags = 0;
     SInt64 outDataByteOffset;
     OSStatus status = AudioFileStreamSeek(_audioFileStreamID, seekToPacket, &outDataByteOffset, &ioFlags);
-    if (status == noErr && !(ioFlags & kAudioFileStreamSeekFlag_OffsetIsEstimated)) {
+    if (status == noErr && !(ioFlags & kAudioFileStreamSeekFlag_OffsetIsEstimated))
+    {
         *time -= ((approximateSeekOffset - _dataOffset) - outDataByteOffset) * 8.0 / _bitRate;
         seekByteOffset = outDataByteOffset + _dataOffset;
     }
@@ -167,15 +187,19 @@ static void JKAudioFileStreamPacketsCallBack(void *inClientData,
 }
 
 #pragma mark - callbacks
-- (void)calculateBitRate {
-    if (_packetDuration && _processedPacketsCount > BitRateEstimationMinPackets && _processedPacketsCount <= BitRateEstimationMaxPackets) {
+- (void)calculateBitRate
+{
+    if (_packetDuration && _processedPacketsCount > BitRateEstimationMinPackets && _processedPacketsCount <= BitRateEstimationMaxPackets)
+    {
         double averagePacketByteSize = _processedPacletSizeTotal / _processedPacketsCount;
         _bitRate = 8.0 * averagePacketByteSize / _packetDuration;
     }
 }
 
-- (void)calculateDuration {
-    if (_fileSize > 0 && _bitRate > 0) {
+- (void)calculateDuration
+{
+    if (_fileSize > 0 && _bitRate > 0)
+    {
         _duration = ((_fileSize - _dataOffset) * 8.0) / _bitRate;
     }
 }
@@ -188,7 +212,8 @@ static void JKAudioFileStreamPacketsCallBack(void *inClientData,
     }
 }
 
-- (void)handleAudioFileStreamProperty:(AudioFileStreamPropertyID)propertyID {
+- (void)handleAudioFileStreamProperty:(AudioFileStreamPropertyID)propertyID
+{
     if (propertyID == kAudioFileStreamProperty_ReadyToProducePackets)
     {
         _readyToProducePackets = YES;
@@ -271,25 +296,36 @@ static void JKAudioFileStreamPacketsCallBack(void *inClientData,
 - (void)handleAudioFileStreamPackets:(const void *)packets
                        numberOfBytes:(UInt32)numberOfBytes
                      numberOfPackets:(UInt32)numberOfPackets
-                  packetDescriptions:(AudioStreamPacketDescription *)packetDescriptioins {
-    if (_discontinuous) {
+                  packetDescriptions:(AudioStreamPacketDescription *)packetDescriptioins
+{
+    if (_discontinuous)
+    {
         _discontinuous = NO;
     }
     
-    if (numberOfBytes == 0 || numberOfPackets == 0) {
+    if (numberOfBytes == 0 || numberOfPackets == 0)
+    {
         return;
     }
+    
     BOOL deletePackDesc = NO;
-    if (packetDescriptioins == NULL) {
+    if (packetDescriptioins == NULL)
+    {
         deletePackDesc = YES;
         UInt32 packetSize = numberOfBytes / numberOfPackets;
         AudioStreamPacketDescription *descriptions = (AudioStreamPacketDescription *)malloc(sizeof(AudioStreamPacketDescription) * numberOfPackets);
-        for (int i = 0; i < numberOfPackets; i++) {
-            UInt32 packetoffset = packetSize * i;
-            descriptions[i].mStartOffset = packetoffset;
-            if (i == numberOfPackets  - 1) {
-                descriptions[i].mDataByteSize = numberOfBytes - packetoffset;
-            } else {
+        
+        for (int i = 0; i < numberOfPackets; i++)
+        {
+            UInt32 packetOffset = packetSize * i;
+            descriptions[i].mStartOffset = packetOffset;
+            descriptions[i].mVariableFramesInPacket = 0;
+            if (i == numberOfPackets - 1)
+            {
+                descriptions[i].mDataByteSize = numberOfBytes - packetOffset;
+            }
+            else
+            {
                 descriptions[i].mDataByteSize = packetSize;
             }
         }
@@ -297,26 +333,28 @@ static void JKAudioFileStreamPacketsCallBack(void *inClientData,
     }
     
     NSMutableArray *parsedDataArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i < numberOfPackets; ++i) {
+    for (int i = 0; i < numberOfPackets; ++i)
+    {
         SInt64 packetOffset = packetDescriptioins[i].mStartOffset;
         JKParsedAudioData *parsedData = [JKParsedAudioData parseAudioDataWithBytes:packets + packetOffset
-                                                                 packetDescription:packetDescriptioins[i]];
+                                                                  packetDescription:packetDescriptioins[i]];
+        
         [parsedDataArray addObject:parsedData];
         
-        if (_processedPacketsCount < BitRateEstimationMaxPackets) {
+        if (_processedPacketsCount < BitRateEstimationMaxPackets)
+        {
             _processedPacletSizeTotal += parsedData.packetDescription.mDataByteSize;
             _processedPacketsCount += 1;
             [self calculateBitRate];
             [self calculateDuration];
         }
     }
+    
     [_delegate audioFileStream:self audioDataParsed:parsedDataArray];
     
-    if (deletePackDesc) {
+    if (deletePackDesc)
+    {
         free(packetDescriptioins);
     }
 }
-
-
-
 @end
